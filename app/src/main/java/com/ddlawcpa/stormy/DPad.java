@@ -89,7 +89,7 @@ public class DPad {
         View.OnClickListener clickStop = new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-
+                mover.killIt();
             }
         };
 

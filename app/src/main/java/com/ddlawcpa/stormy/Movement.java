@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.io.IOException;
+
 /**
  * Created by davidd on 4/16/2016.
  */
@@ -28,7 +30,7 @@ public class Movement {
 
     }
 
-    public String onClick(String s, float f) {
+    public void onClick(String s, float f) {
 
         location = f;
         viewProp = s;
@@ -36,29 +38,41 @@ public class Movement {
         animation = ObjectAnimator.ofFloat(mMoveButton, viewProp, location);
         animation.setDuration(2000);
         animation.start();
-        return animation.getAnimatedValue().toString();
+
+
     }
 
     public void killIt(){
-        animation.end();
-    }
 
-    public void getPosition(TextView x, TextView y){
-
-        mXposition = x;
-        mYposition = y;
-        ValueAnimator.AnimatorUpdateListener listenerX = new ValueAnimator.AnimatorUpdateListener() {
+        Movement.this.animation.cancel();
+/*        ValueAnimator.AnimatorUpdateListener stopUpdateListener = new ValueAnimator.AnimatorUpdateListener() {
 
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
-                mXposition.setText(animation.getAnimatedValue().toString());
-                mYposition.setText(animation.getAnimatedValue().toString());
+                Movement.this.animation.cancel();
 
             }
+        }; */
+    }
 
 
+    public void getPosition(TextView x, TextView y){
+        mXposition = x;
+        mYposition = y;
+        ValueAnimator.AnimatorUpdateListener positionUpdateListener = new ValueAnimator.AnimatorUpdateListener() {
+
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+
+                    String mXvalue = Movement.this.animation.getAnimatedValue().toString();
+                    String mYvalue = Movement.this.animation.getAnimatedValue().toString();
+
+                    mXposition.setText(mXvalue);
+                    mYposition.setText(mYvalue);
+
+            }
         };
-        this.animation.addUpdateListener(listenerX);
+        this.animation.addUpdateListener(positionUpdateListener);
     }
 
 
