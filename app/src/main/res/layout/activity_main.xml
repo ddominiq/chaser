@@ -7,55 +7,33 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.ddlawcpa.stormy.MainActivity">
+    tools:context="com.ddlawcpa.stormy.MainActivity"
+                android:minHeight="150dp"
+                android:minWidth="150dp">
 
     <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Subscribe"
-        android:id="@+id/subscribeButton"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
-
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/nameEditText"
-        android:inputType="textPersonName"
-        android:layout_above="@+id/subscribeButton"
-        android:layout_toRightOf="@+id/textView2"
-        android:layout_toEndOf="@+id/textView2"/>
-
-    <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
-        android:id="@+id/ageEditText"
-        android:layout_alignBottom="@+id/textView"
-        android:layout_toRightOf="@+id/textView"
-        android:layout_toEndOf="@+id/textView"/>
+        android:text="Game"
+        android:id="@+id/gameButton"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"/>
 
-    <TextView
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Age"
-        android:id="@+id/textView"
-        android:layout_above="@+id/nameEditText"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:labelFor="@id/ageEditText"/>
+        android:text="App"
+        android:id="@+id/appButton"
+        android:layout_below="@+id/gameButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="62dp"/>
 
-    <TextView
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Name"
-        android:id="@+id/textView2"
-        android:layout_alignBottom="@+id/nameEditText"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:labelFor="@id/nameEditText"/>
+        android:text="Fragment"
+        android:id="@+id/fragmentButton"
+        android:layout_above="@+id/gameButton"
+        android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>

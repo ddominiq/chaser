@@ -23,6 +23,8 @@ public class DPad {
     private Button mStopButton;
     private TextView mXposition;
     private TextView mYposition;
+    private float xLocation;
+    private float yLocation;
 
 
     // Constructor
@@ -34,9 +36,6 @@ public class DPad {
         mLeftButton = l;
         mRightButton = r;
         mStopButton = s;
-
-
-
     }
 
     // Moves the button
@@ -44,47 +43,47 @@ public class DPad {
 
 
     public void move(TextView x, TextView y){
-
         mXposition = x;
         mYposition = y;
-        String xPosition;
-        String yPosition;
+
 
         final Movement mover = new Movement(mChasedButton);
 
 
-        View.OnClickListener clickLeft = new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                mover.onClick("x", -50F);
-                mover.getPosition(mXposition, mYposition);
-            }
-        };
-
-
-        View.OnClickListener clickRight = new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                mover.onClick("x", 1000F);
-                mover.getPosition(mXposition, mYposition);
-            }
-        };
 
         View.OnClickListener clickUp = new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                mover.onClick("y", -50F);
-                mover.getPosition(mXposition, mYposition);
+                mover.onClick("translationY", 0);
+                // mover.getPosition(mXposition, mYposition);
             }
         };
-
         View.OnClickListener clickDown = new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                mover.onClick("y",1000F);
-                mover.getPosition(mXposition, mYposition);
+                mover.onClick("translationY", 1);
+                // mover.getPosition(mXposition, mYposition);
             }
         };
+        View.OnClickListener clickLeft = new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                mover.onClick("translationX", 2);
+
+                //  mover.getPosition(mXposition, mYposition);
+            }
+        };
+
+        View.OnClickListener clickRight = new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                mover.onClick("translationX", 3);
+                //mover.getPosition(mXposition, mYposition);
+            }
+        };
+
+
+
 
         View.OnClickListener clickStop = new View.OnClickListener(){
             @Override
@@ -92,17 +91,11 @@ public class DPad {
                 mover.killIt();
             }
         };
-
-
-
         mUpButton.setOnClickListener(clickUp);
         mDownButton.setOnClickListener(clickDown);
         mLeftButton.setOnClickListener(clickLeft);
         mRightButton.setOnClickListener(clickRight);
         mStopButton.setOnClickListener(clickStop);
-
-
-
 
     }
 

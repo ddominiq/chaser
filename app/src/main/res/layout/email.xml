@@ -105,6 +105,15 @@
         android:layout_alignLeft="@+id/rightButton"
         android:layout_alignStart="@+id/rightButton"/>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Home"
+        android:id="@+id/homeButton"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/chasedButton"
+        android:layout_alignStart="@+id/chasedButton"/>
+
 </RelativeLayout>
 
 

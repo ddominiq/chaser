@@ -15,7 +15,8 @@ import java.io.IOException;
  */
 public class Movement {
 
-    private float location = 0;
+    private float start = 0;
+    private float stop = 0;
     private String viewProp;
     private Button mMoveButton;
     private TextView mYposition;
@@ -29,17 +30,40 @@ public class Movement {
         mMoveButton = b;
 
     }
-
-    public void onClick(String s, float f) {
-
-        location = f;
+    public void onClick(String s, int direction) {
         viewProp = s;
 
-        animation = ObjectAnimator.ofFloat(mMoveButton, viewProp, location);
+        animation = ObjectAnimator.ofFloat(mMoveButton, viewProp, start, stop);
+
+        // int refers to direction; 0 = up; 1 = down; 2 = left= 3 = right
+
+        switch (direction){
+            case 0:
+                start -= (float)this.animation.getAnimatedValue("translationY");
+
+                Float stop1 = (float) this.animation.getAnimatedValue("translationY");
+                stop = stop1 - 100;
+                break;
+            case 1:
+                start += 100;
+                stop1 = (float) this.animation.getAnimatedValue("translationX");
+                stop = stop1 + 100;
+                break;
+
+            case 2:
+                start -= 200;
+                stop1 = (float) this.animation.getAnimatedValue("translationY");
+                stop = stop1 - 100;
+                break;
+            case 3:
+                start += 100;
+                stop1 = (float) this.animation.getAnimatedValue("translationY");
+                stop = stop1 + 100;
+                break;
+        }
+
         animation.setDuration(2000);
         animation.start();
-
-
     }
 
     public void killIt(){

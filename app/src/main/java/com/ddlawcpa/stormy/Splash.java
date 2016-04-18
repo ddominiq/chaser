@@ -4,6 +4,7 @@ import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,7 +15,7 @@ import org.w3c.dom.Text;
 
 public class Splash extends Activity {
 
-
+    private Button mHomeButton;
     private Button mDownButton;
     private Button mLeftButton;
     private Button mRightButton;
@@ -31,6 +32,7 @@ public class Splash extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.email);
 
+        mHomeButton = (Button) findViewById(R.id.homeButton);
         mDownButton = (Button) findViewById(R.id.downButton);
         mLeftButton = (Button) findViewById(R.id.leftButton);
         mRightButton = (Button) findViewById(R.id.rightButton);
@@ -44,9 +46,15 @@ public class Splash extends Activity {
 
         controller.move(mXposition, mYposition);
 
-        mXposition.setText("hey");
+        View.OnClickListener homeListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Splash.this, MainActivity.class);
+                startActivity(intent);
+            }
+        };
 
-
+        mHomeButton.setOnClickListener(homeListener);
 
     }
 }
